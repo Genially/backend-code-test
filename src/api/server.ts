@@ -1,10 +1,17 @@
 import errorHandler from "errorhandler";
 import app from "./app";
+import mongoose from "./mongoose";
+import config from "../config/vars";
 
 /**
  * Error Handler. Provides full stack - remove for production
  */
 app.use(errorHandler());
+
+/**
+ * Open mongoose connection
+ */
+ mongoose(config.MONGO_URI);
 
 /**
  * Start Express server.
