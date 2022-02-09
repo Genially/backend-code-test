@@ -10,14 +10,15 @@ export default class MongoGeniallyRepository implements GeniallyRepository {
   }
 
   async save(genially: Genially): Promise<void> {
-    await this.delete(genially.id);
+    const existingGenially = await GeniallySchema.findOne<Genially>({ id: genially.id });
 
-    const newGenially = new GeniallySchema();
-    newGenially.id = genially.id;
-    newGenially.name = genially.name;
-    newGenially.description = genially.description;
-
-    await newGenially.save();
+    if (!existingGenially) {
+      const newGenially = new GeniallySchema();
+      newGenially.id = genially.id;
+      newGenially.name = genially.name;
+      newGenially.description = genially.description;
+      await newGenially.save();
+    }
   }
 
   async find(id: string): Promise<GeniallyServiceResponse> {
