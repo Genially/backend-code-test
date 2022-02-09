@@ -12,14 +12,14 @@ export const createGenially = (length = 1): CreateGeniallyServiceRequest[] => {
   );
 };
 
-export const createInvalidNameGenionally = (name: string): CreateGeniallyServiceRequest => {
+export const createInvalidNameGenially = (name: string): CreateGeniallyServiceRequest => {
   return {
       ...createGenially()[0],
       name
     };
 };
 
-export const createInvalidDescriptionGenionally = (description: string): CreateGeniallyServiceRequest => {
+export const createInvalidDescriptionGenially = (description: string): CreateGeniallyServiceRequest => {
   return {
       ...createGenially()[0],
       description

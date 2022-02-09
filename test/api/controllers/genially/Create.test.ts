@@ -1,12 +1,32 @@
 import request from "supertest";
 import app from "../../../../src/api/app";
-import { createInvalidNameGenionally, createGenially, createInvalidDescriptionGenionally } from "../../../utils/createGenially";
+import { createInvalidNameGenially, createGenially, createInvalidDescriptionGenially } from "../../../utils/createGenially";
 
 describe("CreateController", () => {
+  const genially = createGenially()[0];
+
   it("should creates a new Genially", async () => {
     await request(app)
       .post("/api/genially")
-      .send(createGenially()[0])
+      .send(genially)
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(201);
+
+    const response = await request(app)
+      .get("/api/genially")
+      .set("Accept", "application/json");
+
+    expect(response.body).toHaveLength(1);
+  });
+
+  it("should creates a new Genially without description", async () => {
+    await request(app)
+      .post("/api/genially")
+      .send({
+        id: genially.id,
+        name: genially.name
+      })
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(201);
@@ -21,7 +41,7 @@ describe("CreateController", () => {
   it("should fails to create a new Genially if the description is invalid", (done) => {
     request(app)
       .post("/api/genially")
-      .send(createInvalidDescriptionGenionally(""))
+      .send(createInvalidDescriptionGenially("lorem"))
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(400, {
@@ -32,7 +52,7 @@ describe("CreateController", () => {
   it("should fails to create a new Genially if the name is invalid", (done) => {
     request(app)
       .post("/api/genially")
-      .send(createInvalidNameGenionally(""))
+      .send(createInvalidNameGenially(""))
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(400, {

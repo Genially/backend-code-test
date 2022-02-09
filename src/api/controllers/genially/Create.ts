@@ -9,7 +9,7 @@ export const createGenially = async (req: Request, res: Response) => {
   if (body.name.length < 3 || body.name.length > 20) return res.status(400).json({
     message: "The name of a genially cannot be empty and its length has to be from 3 to 20 characters."
   }).end();
-  if (body.description.length < 125) return res.status(400).json({
+  if (body?.description && body?.description.length < 125) return res.status(400).json({
     message: "The description of a genially is limited to 125 characters."
   }).end();
 
