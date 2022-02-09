@@ -1,11 +1,13 @@
 import compression from "compression";
 import express from "express";
 import lusca from "lusca";
-import { router } from "./controllers/Genially/Router";
+import mongoose from "mongoose";
+import { router } from "./controllers/genially/Router";
 import InMemoryGeniallyRepository from "../contexts/core/genially/infrastructure/InMemoryGeniallyRepository";
 
 // Controllers (route handlers)
 import * as healthController from "./controllers/health";
+import MongoGeniallyRepository from "../contexts/core/genially/infrastructure/MongoGeniallyRepository";
 
 // Create Express server
 const app = express();
@@ -23,4 +25,13 @@ app.use("/api", router);
 app.get("/", healthController.check);
 
 export default app;
-export const repository = new InMemoryGeniallyRepository();
+
+async function connect() {
+  await mongoose.connect("mongodb://mongo:27017/documents");
+}
+
+if(process.env.ENVIRONMENT === "prod") connect();
+
+export const repository = process.env.ENVIRONMENT === "test"
+  ? new InMemoryGeniallyRepository()
+  : new MongoGeniallyRepository;
