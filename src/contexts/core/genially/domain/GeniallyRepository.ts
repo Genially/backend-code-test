@@ -1,6 +1,8 @@
 import Genially from "./Genially";
 
 interface GeniallyRepository {
+  count(): Promise<number>;
+
   save(genially: Genially): Promise<void>;
 
   find(id: string): Promise<Genially>;
