@@ -1,6 +1,6 @@
 import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
-import { GeniallyServiceResponse } from "../domain/GeniallyResponse";
+import { GeniallyServiceResponse } from "./models/GeniallyResponse";
 
 export default class GetGeniallyService {
   constructor(private repository: GeniallyRepository) {}

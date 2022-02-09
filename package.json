@@ -10,7 +10,7 @@
     "serve-debug": "nodemon --inspect dist/api/server.js",
     "serve": "ENVIRONMENT=prod node dist/api/server.js",
     "start": "ENVIRONMENT=test npm run serve",
-    "test": "jest --forceExit --coverage --verbose",
+    "test": "ENVIRONMENT=test jest --forceExit --coverage --verbose",
     "watch-node": "ENVIRONMENT=test nodemon dist/api/server.js",
     "watch-test": "ENVIRONMENT=test npm run test -- --watchAll",
     "watch-ts": "tsc -w"

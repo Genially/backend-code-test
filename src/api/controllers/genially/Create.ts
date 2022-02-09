@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import CreateGeniallyService from "../../../contexts/core/genially/application/CreateGeniallyService";
-import { CreateGeniallyServiceRequest } from "../../../contexts/core/genially/domain/GeniallyRequest";
+import { CreateGeniallyServiceRequest } from "../../../contexts/core/genially/application/models/GeniallyRequest";
 import { repository } from "../../app";
 
 export const createGenially = async (req: Request, res: Response) => {

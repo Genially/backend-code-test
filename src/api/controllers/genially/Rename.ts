@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import FindGeniallyService from "../../../contexts/core/genially/application/FindGeniallyService";
 import RenameGeniallyService from "../../../contexts/core/genially/application/RenameGeniallyService";
 import GeniallyNotExist from "../../../contexts/core/genially/domain/GeniallyNotExist";
-import { CreateGeniallyServiceRequest } from "../../../contexts/core/genially/domain/GeniallyRequest";
+import { CreateGeniallyServiceRequest } from "../../../contexts/core/genially/application/models/GeniallyRequest";
 import { repository } from "../../app";
 
 export const renameGenially = async (req: Request, res: Response) => {
