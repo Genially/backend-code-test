@@ -5,6 +5,8 @@ interface GeniallyRepository {
 
   find(id: string): Promise<Genially>;
 
+  findAll(): Promise<Genially[]>;
+
   delete(id: string): Promise<void>;
 }
 
