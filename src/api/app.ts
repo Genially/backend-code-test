@@ -27,7 +27,7 @@ app.get("/", healthController.check);
 export default app;
 
 async function connect() {
-  await mongoose.connect("mongodb://mongo:27017/documents");
+  await mongoose.connect("mongodb://localhost:27017/documents");
 }
 
 if(process.env.ENVIRONMENT === "prod") connect();

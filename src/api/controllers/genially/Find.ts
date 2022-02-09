@@ -17,12 +17,13 @@ export const findGenially = async (req: Request, res: Response) => {
       .end();
   }
 
-  const { id: geniallyId, name, description } = genially;
+  const { id: geniallyId, name, description, deletedAt } = genially;
 
   res.status(200).json({
       id: geniallyId,
       name,
-      description
+      description,
+      deletedAt
   });
 };
 

@@ -1,3 +1,4 @@
+import { GeniallyServiceResponse } from "../application/models/GeniallyResponse";
 import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
 
@@ -13,12 +14,19 @@ export default class InMemoryGeniallyRepository implements GeniallyRepository {
     this.geniallys.push(genially);
   }
 
-  async find(id: string): Promise<Genially> {
+  async find(id: string): Promise<GeniallyServiceResponse> {
     return this.geniallys.find((genially) => genially.id === id);
   }
 
-  async findAll(): Promise<Genially[]> {
-    return this.geniallys.filter((genially) => genially.isActive());
+  async findAll(): Promise<GeniallyServiceResponse[]> {
+    return this.geniallys
+    .filter((genially) => genially.isActive())
+    .map(g => ({
+      id: g.id,
+      name: g.name,
+      description: g.description,
+      deletedAt: g.deletedAt
+    }));
   }
 
   async delete(id: string): Promise<void> {

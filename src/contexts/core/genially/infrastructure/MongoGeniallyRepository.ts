@@ -1,3 +1,4 @@
+import { GeniallyServiceResponse } from "../application/models/GeniallyResponse";
 import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
 import { GeniallySchema } from "../domain/GeniallySchema";
@@ -19,20 +20,31 @@ export default class MongoGeniallyRepository implements GeniallyRepository {
     await newGenially.save();
   }
 
-  async find(id: string): Promise<Genially> {
-    return await GeniallySchema.findById(id);
+  async find(id: string): Promise<GeniallyServiceResponse> {
+    const genially = await GeniallySchema.findOne<Genially>({ id });
+    return {
+      id: genially.id,
+      name: genially.name,
+      description: genially.description,
+      deletedAt: genially.deletedAt
+    };
   }
 
-  async findAll(): Promise<Genially[]> {
+  async findAll(): Promise<GeniallyServiceResponse[]> {
     const geniallys = await GeniallySchema.find<Genially>();
     return geniallys.map(g => ({
       id: g.id,
       name: g.name,
-      description: g.description
-    } as Genially));
+      description: g.description,
+      deletedAt: g.deletedAt
+    } as GeniallyServiceResponse));
   }
 
   async delete(id: string): Promise<void> {
-    await GeniallySchema.deleteOne( { id });
+    const geneally = await GeniallySchema.findOne({ id });
+    if(geneally) {
+      geneally.deletedAt = new Date();
+      await geneally.save();
+    }
   }
 }

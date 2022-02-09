@@ -16,7 +16,8 @@ export default class CreateGeniallyService {
     return {
       id: genially.id,
       name: genially.name,
-      description: genially.description
+      description: genially.description,
+      deletedAt: genially.deletedAt
     };
   }
 }

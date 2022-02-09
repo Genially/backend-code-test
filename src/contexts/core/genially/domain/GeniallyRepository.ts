@@ -1,3 +1,4 @@
+import { GeniallyServiceResponse } from "../application/models/GeniallyResponse";
 import Genially from "./Genially";
 
 interface GeniallyRepository {
@@ -5,9 +6,9 @@ interface GeniallyRepository {
 
   save(genially: Genially): Promise<void>;
 
-  find(id: string): Promise<Genially>;
+  find(id: string): Promise<GeniallyServiceResponse>;
 
-  findAll(): Promise<Genially[]>;
+  findAll(): Promise<GeniallyServiceResponse[]>;
 
   delete(id: string): Promise<void>;
 }

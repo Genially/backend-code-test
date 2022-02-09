@@ -6,6 +6,5 @@ export default class FindGeniallyService {
 
   public async execute(geniallyId: string): Promise<GeniallyServiceResponse> {
     return await this.repository.find(geniallyId);
-
   }
 }
