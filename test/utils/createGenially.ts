@@ -1,6 +1,6 @@
 import faker from "@faker-js/faker";
 
-import { CreateGeniallyServiceRequest } from "../../src/contexts/core/genially/domain/GeniallyRequest";
+import { CreateGeniallyServiceRequest } from "../../src/contexts/core/genially/application/models/GeniallyRequest";
 
 export const createGenially = (length = 1): CreateGeniallyServiceRequest[] => {
   return Array.from<CreateGeniallyServiceRequest>({ length}).fill(undefined).map(() =>

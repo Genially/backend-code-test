@@ -37,7 +37,7 @@
     "@typescript-eslint/parser": "^5.11.0",
     "cross-env": "^7.0.2",
     "errorhandler": "^1.5.1",
-    "eslint": "^6.8.0",
+    "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
