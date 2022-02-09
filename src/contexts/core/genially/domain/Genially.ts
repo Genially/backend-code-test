@@ -38,10 +38,10 @@ export default class Genially {
   }
 
   deactive(): void {
-    this._modifiedAt = new Date();
+    this._deletedAt = new Date();
   }
 
   isActive(): boolean {
-    return !this._modifiedAt;
+    return !this._deletedAt;
   }
 }
