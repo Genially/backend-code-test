@@ -36,4 +36,12 @@ export default class Genially {
   get deletedAt(): Date {
     return this._deletedAt;
   }
+
+  deactive(): void {
+    this._modifiedAt = new Date();
+  }
+
+  isActive(): boolean {
+    return !this._modifiedAt;
+  }
 }

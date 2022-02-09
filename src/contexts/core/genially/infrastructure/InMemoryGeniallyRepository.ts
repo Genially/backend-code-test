@@ -14,10 +14,12 @@ export default class InMemoryGeniallyRepository implements GeniallyRepository {
   }
 
   async findAll(): Promise<Genially[]> {
-    return this.geniallys;
+    return this.geniallys.filter((genially) => genially.isActive());
   }
 
   async delete(id: string): Promise<void> {
-    this.geniallys = this.geniallys.filter((genially) => genially.id !== id);
+    const genially = this.geniallys.find((genially) => genially.id === id);
+
+    genially?.deactive();
   }
 }
