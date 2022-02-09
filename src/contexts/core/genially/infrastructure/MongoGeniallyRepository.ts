@@ -4,6 +4,10 @@ import { GeniallySchema } from "../domain/GeniallySchema";
 
 export default class MongoGeniallyRepository implements GeniallyRepository {
 
+  async count(): Promise<number> {
+    return await GeniallySchema.count();
+  }
+
   async save(genially: Genially): Promise<void> {
     await this.delete(genially.id);
 
