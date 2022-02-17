@@ -39,6 +39,7 @@
     "nodemon": "^2.0.3",
     "supertest": "^4.0.2",
     "ts-jest": "^25.4.0",
+    "ts-mockito": "^2.6.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   }

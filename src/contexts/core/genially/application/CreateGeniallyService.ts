@@ -2,9 +2,9 @@ import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
 
 type CreateGeniallyServiceRequest = {
-  id: string;
-  name: string;
-  description: string;
+  id: Genially["id"];
+  name: Genially["name"];
+  description: Genially["description"];
 };
 
 export default class CreateGeniallyService {
