@@ -1,3 +1,7 @@
+[![CI/CD node.js](https://github.com/SantiMA10/backend-code-test/actions/workflows/nodejs.yml/badge.svg)](https://github.com/SantiMA10/backend-code-test/actions/workflows/nodejs.yml)
+
+---
+
 Welcome to this code test! :)
 
 The main objective of this technical exercise is for you to get a good grasp of what kind of problems we encounter on Genially. We wouldn't want you to find some nasty surprises if you decide to join us.
