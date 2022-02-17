@@ -31,11 +31,12 @@ The development has already started but our teammate has gone on a well-deserved
 
 Additionally, each module of a bounded context is organized in different layers:
 
-| Name               | Description                                                                                        |
-| ------------------ | -------------------------------------------------------------------------------------------------- |
-| **application**    | Contains application services (i.e. use cases) that communicate with our domain                    |
-| **domain**         | Contains building blocks that conform our domain                                                   |
-| **infrastructure** | Contains artifacts that interact with external world, such as a particular database or web service |
+| Name               | Description                                                                                                                                              |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **application**    | Contains application services (i.e. use cases) that communicate with our domain                                                                          |
+| **domain**         | Contains building blocks that conform our domain                                                                                                         |
+| **infrastructure** | Contains artifacts that interact with external world, such as a particular database or web service                                                       |
+| **adapters**       | Contains adapters that convert data from the format most convenient for the use cases and entities, to the format most convenient for the external world |
 
 As you will see, the project is in a very initial stage but some code has already been developed. Therefore, all the provided code (and the project structure) is under development and you can modify it if necessary.
 
