@@ -6,6 +6,7 @@
     "build-ts": "tsc",
     "build": "npm run build-ts && npm run lint",
     "dev": "cross-env NODE_ENV=dev ts-node-dev --ignore-watch node_modules --inspect=0.0.0.0:9267 ./src/api/server.ts",
+    "ci:lint": "tsc --noEmit && eslint \"**/*.{js,ts}\"",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "serve-debug": "nodemon --inspect dist/server.js",
     "serve": "node dist/server.js",
