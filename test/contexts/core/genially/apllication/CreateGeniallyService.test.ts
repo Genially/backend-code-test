@@ -2,13 +2,17 @@ import CreateGeniallyService from "../../../../../src/contexts/core/genially/app
 import Genially from "../../../../../src/contexts/core/genially/domain/Genially";
 import GeniallyRepository from "../../../../../src/contexts/core/genially/domain/GeniallyRepository";
 import InMemoryGeniallyRepository from "../../../../../src/contexts/core/genially/infrastructure/InMemoryGeniallyRepository";
+import { InMemoryEventBus } from "../../../../../src/contexts/core/InMemoryEventBus";
 
 let repository: GeniallyRepository;
 let createGeniallyService: CreateGeniallyService;
 
 beforeEach(() => {
   repository = new InMemoryGeniallyRepository();
-  createGeniallyService = new CreateGeniallyService(repository);
+  createGeniallyService = new CreateGeniallyService(
+    repository,
+    new InMemoryEventBus()
+  );
 });
 
 describe("test of  CreateGeniallyService", () => {
