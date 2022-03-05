@@ -7,6 +7,7 @@ import { InMemoryEventBus } from "../contexts/core/InMemoryEventBus";
 // Controllers (route handlers)
 import * as healthController from "./controllers/health";
 import { registerGenialyRouter } from "./genially/genially.router";
+import { registerCounterGenialysRouter } from "./geniallyCounter/geniallysCounter.route";
 import { registerSubscribersGeniallysCounter } from "./geniallyCounter/subcribersDomainEvents";
 
 // Create EventBus in memory
@@ -28,7 +29,10 @@ app.use(lusca.xssProtection(true));
 // Primary app routes
 app.get("/", healthController.check);
 
-//routes of Genially
+// Routes of Genially
 app.use("/api", registerGenialyRouter(eventBus));
+
+// Routes of Counter Geniallys
+app.use("/api", registerCounterGenialysRouter());
 
 export default app;

@@ -3,10 +3,12 @@ import { IncrementGeniallyWhenGenialyCreated } from "../../contexts/core/geniall
 import { InMemoryGeniallysCounterRepository } from "../../contexts/core/geniallysCounter/infrastructure/InMemoryGeniallysCounterRepository";
 import { InMemoryEventBus } from "../../contexts/core/InMemoryEventBus";
 
+export const geniallysCounterRepository =
+  new InMemoryGeniallysCounterRepository();
+
 export function registerSubscribersGeniallysCounter(
   eventBus: InMemoryEventBus
 ): void {
-  const geniallysCounterRepository = new InMemoryGeniallysCounterRepository();
   const incrementCounterGeniallyService = new IncrementGeniallysCounter(
     geniallysCounterRepository
   );
