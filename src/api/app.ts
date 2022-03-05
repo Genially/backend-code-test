@@ -2,10 +2,17 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import express from "express";
 import lusca from "lusca";
+import { InMemoryEventBus } from "../contexts/core/InMemoryEventBus";
 
 // Controllers (route handlers)
 import * as healthController from "./controllers/health";
 import { registerGenialyRouter } from "./genially/genially.router";
+import { registerSubscribersGeniallysCounter } from "./geniallyCounter/subcribersDomainEvents";
+
+// Create EventBus in memory
+const eventBus = new InMemoryEventBus();
+// Register Subscribers in applications
+registerSubscribersGeniallysCounter(eventBus);
 
 // Create Express server
 const app = express();
