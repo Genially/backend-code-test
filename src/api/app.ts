@@ -29,6 +29,6 @@ app.use(lusca.xssProtection(true));
 app.get("/", healthController.check);
 
 //routes of Genially
-app.use("/api", registerGenialyRouter());
+app.use("/api", registerGenialyRouter(eventBus));
 
 export default app;

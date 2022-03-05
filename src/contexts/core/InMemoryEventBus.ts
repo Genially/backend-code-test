@@ -4,7 +4,7 @@ import { Subscriber } from "./Subscriber";
 export type EventName = string;
 
 export class InMemoryEventBus {
-  private subscribersMap: Map<EventName, Subscriber[]>;
+  private subscribersMap: Map<EventName, Subscriber[]> = new Map();
 
   public async publishEvent(event: DomainEvent): Promise<void> {
     const subscribersInBus = this.subscribersMap.get(event.eventName);
@@ -20,9 +20,9 @@ export class InMemoryEventBus {
   private registerSuncriber(subscriber: Subscriber): void {
     const eventsNames = subscriber.subscribedTo();
     for (const name of eventsNames) {
-      const subscribersMapRef = this.subscribersMap.get(name);
-      if (subscribersMapRef) {
-        subscribersMapRef.push(subscriber);
+      //
+      if (this.subscribersMap.has(name)) {
+        this.subscribersMap.get(name).push(subscriber);
       } else {
         this.subscribersMap.set(name, [subscriber]);
       }

@@ -5,6 +5,7 @@ export class IncrementGeniallysCounter {
   constructor(private repository: GeniallysCounterRepository) {}
 
   public async execute(): Promise<GeniallysCounter> {
+    console.log("evento: genially created, react: CounterGeniallyIncrement");
     let geniallysCounter = await this.repository.search();
 
     if (!geniallysCounter) {
@@ -13,6 +14,7 @@ export class IncrementGeniallysCounter {
 
     geniallysCounter.increment();
     await this.repository.save(geniallysCounter);
+    console.log(await this.repository.search());
     return geniallysCounter;
   }
 

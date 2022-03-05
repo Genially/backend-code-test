@@ -3,17 +3,21 @@ import CreateGeniallyService from "../../contexts/core/genially/application/Crea
 import DeleteGeniallyService from "../../contexts/core/genially/application/DeleteGeniallyService";
 import RenameGeniallyService from "../../contexts/core/genially/application/RenameGeniallyService";
 import InMemoryGeniallyRepository from "../../contexts/core/genially/infrastructure/InMemoryGeniallyRepository";
+import { InMemoryEventBus } from "../../contexts/core/InMemoryEventBus";
 import { DeleteGeniallyController } from "./controllers/DeleteGeniallyController";
 import { GeniallyPostController } from "./controllers/GeniallyPostController";
 import { RenameGeniallyController } from "./controllers/RenameGeniallyController";
 
-export function registerGenialyRouter(): Router {
+export function registerGenialyRouter(eventBus: InMemoryEventBus): Router {
   const geniallyRouter = Router();
 
   const geniallyRepository = new InMemoryGeniallyRepository();
 
   //Create Genially Router
-  const createGeniallyService = new CreateGeniallyService(geniallyRepository);
+  const createGeniallyService = new CreateGeniallyService(
+    geniallyRepository,
+    eventBus
+  );
   const genialyPostControler = new GeniallyPostController(
     createGeniallyService
   );

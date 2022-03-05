@@ -1,4 +1,6 @@
+import { InMemoryEventBus } from "../../InMemoryEventBus";
 import Genially from "../domain/Genially";
+import { GeniallyCreatedDomainEvent } from "../domain/GeniallyCreatedDomainEvent";
 import { GeniallyDescription } from "../domain/GeniallyDescription";
 import { GeniallyName } from "../domain/GeniallyName";
 import GeniallyRepository from "../domain/GeniallyRepository";
@@ -10,7 +12,10 @@ type CreateGeniallyServiceRequest = {
 };
 
 export default class CreateGeniallyService {
-  constructor(private repository: GeniallyRepository) {}
+  constructor(
+    private repository: GeniallyRepository,
+    private eventBus: InMemoryEventBus
+  ) {}
 
   public async execute(req: CreateGeniallyServiceRequest): Promise<Genially> {
     const { id, name, description } = req;
@@ -23,6 +28,7 @@ export default class CreateGeniallyService {
 
     await this.repository.save(genially);
 
+    this.eventBus.publishEvent(new GeniallyCreatedDomainEvent(genially.id));
     return genially;
   }
 }
