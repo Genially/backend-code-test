@@ -1,16 +1,30 @@
+import { GeniallyDescription } from "./GeniallyDescription";
+import { GeniallyName } from "./GeniallyName";
+
 export default class Genially {
   private _id: string;
-  private _name: string;
-  private _description: string;
+  private _name: GeniallyName;
+  private _description: GeniallyDescription;
   private _createdAt: Date;
   private _modifiedAt: Date;
   private _deletedAt: Date;
 
-  constructor(id: string, name: string, description?: string) {
+  constructor(
+    id: string,
+    name: GeniallyName,
+    description?: GeniallyDescription
+  ) {
     this._id = id;
     this._name = name;
     this._description = description;
     this._createdAt = new Date();
+  }
+  public deleteFromDate(date: Date): void {
+    this._deletedAt = date;
+  }
+  public rename(newName: GeniallyName): void {
+    this._name = newName;
+    this._modifiedAt = new Date();
   }
 
   get id(): string {
@@ -18,11 +32,11 @@ export default class Genially {
   }
 
   get name(): string {
-    return this._name;
+    return this._name.value;
   }
 
   get description(): string {
-    return this._description;
+    return this._description.value;
   }
 
   get createdAt(): Date {
