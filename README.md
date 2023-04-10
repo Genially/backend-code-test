@@ -90,7 +90,7 @@ https://www.typescriptlang.org/
 
 If you have any questions about the test, you can contact any of us:
 
-- Chema (chema@genial.ly)
+- Chema (<em>Github User [@chemitaxis](https://github.com/chemitaxis)</em> / chema@genially.com)
 - Rubén (ruben@genial.ly)
 - Francisco (francisco@genial.ly)
 
