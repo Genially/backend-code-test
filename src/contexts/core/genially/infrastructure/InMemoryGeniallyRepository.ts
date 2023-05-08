@@ -2,7 +2,7 @@ import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
 
 export default class InMemoryGeniallyRepository implements GeniallyRepository {
-  private geniallys: Genially[];
+  private geniallys: Genially[] = [];
 
   async save(genially: Genially): Promise<void> {
     await this.delete(genially.id);
