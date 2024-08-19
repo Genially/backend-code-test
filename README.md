@@ -19,8 +19,7 @@ The development has already started but our teammate has gone on a well-deserved
 | **src/contexts**               | Bounded contexts (in terms of Domain-Driven Design) of our domain. Don't worry about the meaning, you can consider it another way of organizing code ;) |
 | **src/contexts/core**          | Core (and only) bounded context of our domain                                                                                                           |
 | **src/contexts/core/genially** | Module of the core context                                                                                                                              |
-| jest.config.js                 | Used to configure Jest running tests written in TypeScript                                                                                              |
-| package.json                   | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped)                                              |
+| package.json                   | File that contains npm dependencies as well as build scripts                                                                                            |
 | tsconfig.json                  | Config settings for compiling server code written in TypeScript                                                                                         |
 | .eslintrc                      | Config settings for ESLint code style checking                                                                                                          |
 | .eslintignore                  | Config settings for paths to exclude from linting                                                                                                       |
@@ -91,7 +90,7 @@ https://www.typescriptlang.org/
 If you have any questions about the test, you can contact any of us:
 
 - Chema (<em>Github User [@chemitaxis](https://github.com/chemitaxis)</em> / chema@genially.com)
-- Rubén (ruben@genial.ly)
-- Francisco (francisco@genial.ly)
+- Rubén (ruben@genially.com)
+- Francisco (francisco@genially.com)
 
 Good Luck!
